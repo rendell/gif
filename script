@@ -1,0 +1,155 @@
+#These packages will be needed
+library("dplyr")
+library("tidyr")
+library("ggplot2")
+library("jpeg")
+library("grid")
+library("extrafont")
+library(ggplot2)
+library(animation)
+
+results=read.csv("resultsC.csv")
+# Import the Wallpaper
+img <- readJPEG("loved_background_2.jpg")
+
+dat <- data.frame(
+  party = factor(c("AVP","PPA", "UPP","MEP","MPA","RED","OLA","ADN","PDR"), levels=c("AVP","PPA", "UPP","MEP","MPA","RED","OLA","ADN","PDR")),
+  result1985 = c(7,2,0,8,0,0,0,1,2), 
+  result1989 = c(8,1,0,10,0,0,0,1,0), 
+  result1993 = c(9,1,0,9,0,0,1,1,0), 
+  result1994 = c(10,0,0,9,0,0,2,0,0), 
+  result1997 = c(10,0,0,9,0,0,2,0,0), 
+  result2001 = c(6,2,0,12,0,0,1,0,0), 
+  result2005 = c(8,0,0,11,1,1,0,0,0), 
+  result2009 = c(12,0,0,8,0,0,0,0,1), 
+  result2013 = c(13, 0,0,7,0,0,0,0,1), 
+  result2017 = c(0,0,0,0,0,0,0,0,0),
+  pallete = c("#00cc00", "#ff9900", "#0099ff", "#ffff00", "#ff66cc", "#ffffff", "#99ddff", "#0088cc","#cc2900")
+)
+dat
+
+# General
+axis.text <- element_text(face = "bold", color = "black", size = 16)
+
+###Graphs
+graph1985 <- ggplot(data=dat,aes(x=party,y=result1985, fill = party)) + 
+  annotation_custom(rasterGrob(img, width=unit(1,"npc"), height=unit(1,"npc")), -Inf, Inf, -Inf, Inf) + 
+  geom_bar(position="stack", stat="identity", alpha=0.8) + 
+  theme(plot.title = element_text(size=75, face="bold"), axis.title.y=element_blank(), axis.text.y=element_blank(), axis.title.x=element_blank()) + 
+  guides(fill=FALSE) + 
+  scale_y_continuous(limits=c(0,15)) + 
+  geom_text(aes(label=result1985), vjust=1.5, colour="black", size=8)+ 
+  scale_fill_manual(values=c("#00cc00", "#ff9900", "#0099ff", "#ffff00", "#ff66cc", "#ffffff", "#99ddff", "#0088cc","#cc2900")) + 
+  theme(axis.text.x = axis.text)
+
+graph1985 +annotate ("text", x=5, y=14, label = "1985", size=30)
+
+graph1989 <- ggplot(data=dat,aes(x=party,y=result1989, fill = party)) + 
+  annotation_custom(rasterGrob(img, width=unit(1,"npc"), height=unit(1,"npc")), -Inf, Inf, -Inf, Inf) + 
+  geom_bar(position="stack", stat="identity", alpha=0.8) + 
+  theme(plot.title = element_text(size=75, face="bold"), axis.title.y=element_blank(), axis.text.y=element_blank(),axis.title.x=element_blank()) + 
+  guides(fill=FALSE) + 
+  scale_y_continuous(limits=c(0,15)) + 
+  geom_text(aes(label=result1989), vjust=1.5, colour="black", size=8)+ 
+  scale_fill_manual(values=c("#00cc00", "#ff9900", "#0099ff", "#ffff00", "#ff66cc", "#ffffff", "#99ddff", "#0088cc","#cc2900")) + 
+  theme(axis.text.x = axis.text)
+
+graph1989 + annotate ("text", x=5, y=14, label = "1989", size=30)
+
+graph1993 <- ggplot(data=dat,aes(x=party,y=result1993, fill = party)) + 
+  annotation_custom(rasterGrob(img, width=unit(1,"npc"), height=unit(1,"npc")), -Inf, Inf, -Inf, Inf) + 
+  geom_bar(position="stack", stat="identity", alpha=0.8) + 
+  theme(plot.title = element_text(size=75, face="bold"),axis.title.y=element_blank(), axis.text.y=element_blank(),axis.title.x=element_blank()) + 
+  guides(fill=FALSE) + scale_y_continuous(limits=c(0,15)) + 
+  geom_text(aes(label=result1993), vjust=1.5, colour="black", size=8)+ 
+  scale_fill_manual(values=c("#00cc00", "#ff9900", "#0099ff", "#ffff00", "#ff66cc", "#ffffff", "#99ddff", "#0088cc","#cc2900"))+ 
+  theme(axis.text.x = axis.text)
+
+graph1993 + annotate ("text", x=5, y=14, label = "1993", size=30)
+
+graph1994 <- ggplot(data=dat,aes(x=party,y=result1994, fill = party)) + 
+  annotation_custom(rasterGrob(img, width=unit(1,"npc"), height=unit(1,"npc")), -Inf, Inf, -Inf, Inf) + 
+  geom_bar(position="stack", stat="identity", alpha=0.8) + 
+  theme(plot.title = element_text(size=75, face="bold"),axis.title.y=element_blank(), axis.text.y=element_blank(),axis.title.x=element_blank()) + 
+  guides(fill=FALSE) + 
+  scale_y_continuous(limits=c(0,15)) + 
+  geom_text(aes(label=result1994), vjust=1.5, colour="black", size=8)+ 
+  scale_fill_manual(values=c("#00cc00", "#ff9900", "#0099ff", "#ffff00", "#ff66cc", "#ffffff", "#99ddff", "#0088cc","#cc2900"))+ 
+  theme(axis.text.x = axis.text)
+
+graph1994 + annotate ("text", x=5, y=14, label = "1994", size=30)
+
+graph1997 <- ggplot(data=dat,aes(x=party,y=result1997, fill = party)) + 
+  annotation_custom(rasterGrob(img, width=unit(1,"npc"), height=unit(1,"npc")), -Inf, Inf, -Inf, Inf) + 
+  geom_bar(position="stack", stat="identity", alpha=0.8) + 
+  theme(plot.title = element_text(size=75, face="bold"),axis.title.y=element_blank(), axis.text.y=element_blank(),axis.title.x=element_blank()) + 
+  guides(fill=FALSE) + 
+  scale_y_continuous(limits=c(0,15)) + 
+  geom_text(aes(label=result1997), vjust=1.5, colour="black", size=8)+ 
+  scale_fill_manual(values=c("#00cc00", "#ff9900", "#0099ff", "#ffff00", "#ff66cc", "#ffffff", "#99ddff", "#0088cc","#cc2900"))+ 
+  theme(axis.text.x = axis.text)
+
+graph1997 + annotate ("text", x=5, y=14, label = "1997", size=30)
+
+
+graph2001 <- ggplot(data=dat,aes(x=party,y=result2001, fill = party)) + 
+  annotation_custom(rasterGrob(img, width=unit(1,"npc"), height=unit(1,"npc")), -Inf, Inf, -Inf, Inf) + 
+  geom_bar(position="stack", stat="identity", alpha=0.8) + 
+  theme(plot.title = element_text(size=75, face="bold"),axis.title.y=element_blank(), axis.text.y=element_blank(),axis.title.x=element_blank()) + 
+  guides(fill=FALSE) + 
+  scale_y_continuous(limits=c(0,15)) + 
+  geom_text(aes(label=result2001), vjust=1.5, colour="black", size=8)+ 
+  scale_fill_manual(values=c("#00cc00", "#ff9900", "#0099ff", "#ffff00", "#ff66cc", "#ffffff", "#99ddff", "#0088cc","#cc2900"))+ 
+  theme(axis.text.x = axis.text)
+
+graph2001 + annotate ("text", x=5, y=14, label = "2001", size=30)
+
+graph2005 <- ggplot(data=dat,aes(x=party,y=result2005, fill = party)) + 
+  annotation_custom(rasterGrob(img, width=unit(1,"npc"), height=unit(1,"npc")), -Inf, Inf, -Inf, Inf) + 
+  geom_bar(position="stack", stat="identity", alpha=0.8) + 
+  theme(plot.title = element_text(size=75, face="bold"),axis.title.y=element_blank(), axis.text.y=element_blank(),axis.title.x=element_blank()) + 
+  guides(fill=FALSE) + 
+  scale_y_continuous(limits=c(0,15)) + 
+  geom_text(aes(label=result2005), vjust=1.5, colour="black", size=8)+ 
+  scale_fill_manual(values=c("#00cc00", "#ff9900", "#0099ff", "#ffff00", "#ff66cc", "#ffffff", "#99ddff", "#0088cc","#cc2900"))+ 
+  theme(axis.text.x = axis.text)
+
+graph2005 + annotate ("text", x=5, y=14, label = "2005", size=30)
+
+
+graph2009 <- ggplot(data=dat,aes(x=party,y=result2009, fill = party)) + 
+  annotation_custom(rasterGrob(img, width=unit(1,"npc"), height=unit(1,"npc")), -Inf, Inf, -Inf, Inf) + 
+  geom_bar(position="stack", stat="identity", alpha=0.8) + 
+  theme(plot.title = element_text(size=75, face="bold"),axis.title.y=element_blank(), axis.text.y=element_blank(),axis.title.x=element_blank()) + 
+  guides(fill=FALSE) + 
+  scale_y_continuous(limits=c(0,15)) + 
+  geom_text(aes(label=result2009), vjust=1.5, colour="black", size=8)+ 
+  scale_fill_manual(values=c("#00cc00", "#ff9900", "#0099ff", "#ffff00", "#ff66cc", "#ffffff", "#99ddff", "#0088cc","#cc2900"))+ 
+  theme(axis.text.x = axis.text)
+
+graph2009 + annotate ("text", x=5, y=14, label = "2009", size=30)
+
+
+graph2013 <- ggplot(data=dat,aes(x=party,y=result2013, fill = party)) + 
+  annotation_custom(rasterGrob(img, width=unit(1,"npc"), height=unit(1,"npc")), -Inf, Inf, -Inf, Inf) + 
+  geom_bar(position="stack", stat="identity", alpha=0.8) + 
+  theme(plot.title = element_text(size=75, face="bold"),axis.title.y=element_blank(), axis.text.y=element_blank(),axis.title.x=element_blank()) + 
+  guides(fill=FALSE) + 
+  scale_y_continuous(limits=c(0,15)) + 
+  geom_text(aes(label=result2013), vjust=1.5, colour="black", size=8)+ 
+  scale_fill_manual(values=c("#00cc00", "#ff9900", "#0099ff", "#ffff00", "#ff66cc", "#ffffff", "#99ddff", "#0088cc","#cc2900"))+ 
+  theme(axis.text.x = axis.text)
+
+graph2013 + annotate ("text", x=5, y=14, label = "2013", size=30)
+
+graph2017 <- ggplot(data=dat,aes(x=party,y=result2017, fill = party)) + 
+  annotation_custom(rasterGrob(img, width=unit(1,"npc"), height=unit(1,"npc")), -Inf, Inf, -Inf, Inf) + 
+  geom_bar(position="stack", stat="identity", alpha=0.8) + 
+  theme(plot.title = element_text(size=75, face="bold"),axis.title.y=element_blank(), axis.text.y=element_blank(),axis.title.x=element_blank()) + 
+  guides(fill=FALSE) + 
+  scale_y_continuous(limits=c(0,15)) + 
+  geom_text(aes(label=result2017), vjust=1.5, colour="black", size=8)+ 
+  scale_fill_manual(values=c("#00cc00", "#ff9900", "#0099ff", "#ffff00", "#ff66cc", "#ffffff", "#99ddff", "#0088cc","#cc2900"))+ 
+  theme(axis.text.x = axis.text)
+
+graph2017 + annotate ("text", x=5, y=14, label = 2017, size=30)
